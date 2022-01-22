@@ -3,8 +3,7 @@ package main
 import (
 	"html/template"
 	"net/http"
-
-	"github.com/quesiasts/web-golang/models"
+	"web-golang/models"
 )
 
 var temp = template.Must(template.ParseGlob("templates/*.html"))
@@ -16,6 +15,5 @@ func main() {
 
 func index(w http.ResponseWriter, r *http.Request) {
 	todosOsProdutos := models.BuscaTodosOsProdutos()
-	temp.ExecuteTemplate(w, "Index", produtos)
-
+	temp.ExecuteTemplate(w, "Index", todosOsProdutos)
 }
